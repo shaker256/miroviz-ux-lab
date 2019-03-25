@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gif player</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+    <img src="../sketches/exp/shark_rec_nose_detail_02.gif" alt="">
+    <script>
+        // solution:
+        // https://stackoverflow.com/questions/10730212/proper-way-to-reset-a-gif-animation-with-displaynone-on-chrome
+        var image = $('img');
+        var imageSrc = image.attr('src');
+        
+        image.click(function(){
+            image.attr('src', ''); // try to hide the first frame... but it's a bad design...
+            setTimeout(function(){
+                console.log('trigger!')
+                image.attr('src', imageSrc + '');
+            }, 0);
+        });
+    </script>
+</body>
+</html>
