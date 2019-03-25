@@ -1,9 +1,8 @@
 // navigator
-const videoSteps = [0, 3, 10, 15]
-let = currentVideoStepPos = 0;
-let = currentVideoStepVal = videoSteps[0];
-let = nextVideoStepVal = videoSteps[1];
-let = prevVideoStepVal = null;
+const steps = [0, 3, 10, 15, 22];
+let currentStep = 0;
+const getNextStep = () => currentStep + 1;
+const getPrevStep = () => currentStep - 1;
 
 // setup buttons
 const video = document.getElementById('video');
@@ -26,32 +25,21 @@ const stopVid = function(el){
     el.currentTime = '0';
 };
 const nextVidStep = function(el){
+    el.pause();
+    el.currentTime = steps[currentStep] + '';
+    el.play();
 
-    console.log('next clicked!'); //debug
-
-    if (currentVideoStepVal !== undefined) {
-        console.log('currentStepVal = true'); //debug
-        // play at time
+    setTimeout(function(){
         el.pause();
-        console.log('currentVideoStepVal:' + currentVideoStepVal);
-        el.currentTime = currentVideoStepVal + '';
-        el.play();
-        setTimeout(function(){
-            el.pause();
-        }, nextVideoStepVal - currentVideoStepVal);
+    }, (steps[getNextStep()] - steps[currentStep]) * 1000 );
 
-        // update videoSteps
-        if ( (videoSteps.length + 1) > (currentVideoStepPos =+ 1) ) {
-            currentVideoStepPos =+ 1;
-            currentVideoStepVal = videoSteps[currentVideoStepPos]
-            nextVideoStepVal = videoSteps[currentVideoStepPos + 1];
-            prevVideoStepVal = videoSteps[currentVideoStepPos - 1];
-        }
+    console.log('nextStep:' + steps[getNextStep()] );
+    console.log('currentStep:' + steps[currentStep] );
 
-        
-
-    } else { /* do nothing... */ }
-
+    // update current step
+    if (currentStep < steps.length - 1) {
+        currentStep++;
+    }
 };
 
 const playVidForDuration = function(el){
