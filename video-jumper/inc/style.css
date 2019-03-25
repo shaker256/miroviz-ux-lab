@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+/* LAYOUT */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}

@@ -39,19 +39,32 @@ p {
 /* STEPS */
 .video-canvas {
   position: relative;
+  border: 1px solid #2A2A2A;
 }
 .video-control {
   position: absolute;
   width: 3rem;
   height: 3rem;
-  bottom: 0.25rem;
-  right: 0;
 }
+/* .video-control {
+  margin-left: -3rem;
+  margin-top: -3rem;
+  top: 50%;
+  left: 50%;
+} */
+.video-control {
+  bottom: 1rem;
+  left: 50%;
+  margin-left: -1.5rem;
+}
+
 .icon-play {
   background-image: url("../svg/play.svg");
+  opacity: 0.1;
 }
 .icon-replay {
   background-image: url("../svg/replay.svg");
+  opacity: 0;
 }
 .steps p {
   color: #7F7F7F;
